@@ -7,7 +7,7 @@ app = FastAPI(title="Amazon Market Estimator API")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"], 
+    allow_origins=["https://amazon-market-estimator.vercel.app/"], 
     allow_methods=["*"],
     allow_headers=["*"],
 )
