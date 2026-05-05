@@ -29,10 +29,20 @@ def get_market_category(titles: list) -> str:
         return "Unknown Niche"
         
     headers = {"Authorization": f"Bearer {HF_API_KEY}"}
-    text_to_analyze = " ".join(titles)[:1000]
+    text_to_analyze = " ".join(titles)[:10]
     payload = {
         "inputs": text_to_analyze,
-        "parameters": {"candidate_labels": ["electronics", "home goods", "software", "books", "health", "apparel"]}
+        "parameters": {"candidate_labels": [
+    "gadgets",
+    "fitness",
+    "beauty",
+    "kitchen",
+    "office",
+    "gaming",
+    "mobile accessories",
+    "home decor"
+],
+        "multi_label": False}
     }
     try:
         # Increased timeout to 10s to help with Hugging Face cold starts
