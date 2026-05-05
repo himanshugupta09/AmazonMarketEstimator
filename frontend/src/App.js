@@ -14,7 +14,7 @@ function App() {
     setData(null);
     try {
       // NOTE: Change this to your live Render URL when deploying the frontend to Vercel
-      const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:8000/analyze'; 
+      const API_URL = process.env.REACT_APP_API_URL || 'https://amazonmarketestimator.onrender.com'; 
       const response = await axios.post(API_URL, { url });
       setData(response.data);
     } catch (err) {
