@@ -5,13 +5,18 @@ from services import scrape_with_agent, get_market_category
 
 app = FastAPI(title="Amazon Market Estimator API")
 
+origins = [
+    "http://localhost:3000",
+    "https://amazon-market-estimator.vercel.app" # <-- Add your live Vercel URL
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://amazon-market-estimator.vercel.app/"], 
+    allow_origins=origins,
+    allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
 @app.post("/analyze", response_model=MarketAnalysisResponse)
 async def analyze_market(data: URLInput):
     if "amazon." not in data.url:
